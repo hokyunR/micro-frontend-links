@@ -1,0 +1,32 @@
+version: '3'
+
+services: 
+  nginx: 
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile 
+    restart: always 
+    ports:
+      - "80:80"
+    depends_on:
+      - home
+      - navigation
+      - berthing
+
+  home: 
+    build: 
+      context: ./home 
+      dockerfile: Dockerfile 
+    restart: always 
+    
+  navigation: 
+    build: 
+      context: ./navigation 
+      dockerfile: Dockerfile 
+    restart: "always"
+
+  berthing: 
+    build: 
+      context: ./berthing 
+      dockerfile: Dockerfile 
+    restart: "always"
